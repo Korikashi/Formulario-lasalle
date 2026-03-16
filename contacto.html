@@ -1,1 +1,60 @@
-<!--- AQUI VA EL FORMULARIO --->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contacto - Universidad de La Salle</title>
+
+<!-- Conectar con el CSS del proyecto -->
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<h2>Formulario de Contacto - Universidad de La Salle</h2>
+
+<!-- 
+Formulario que enviará los datos al archivo enviar.php
+El método POST se usa para enviar datos al servidor
+-->
+
+<form action="enviar.php" method="POST">
+
+<label>Nombre</label><br>
+<input type="text" name="nombre" required>
+<br><br>
+
+<label>Apellido</label><br>
+<input type="text" name="apellido" required>
+<br><br>
+
+<label>Correo electrónico</label><br>
+<input type="email" name="email" required>
+<br><br>
+
+<label>Teléfono</label><br>
+<input type="tel" name="telefono">
+<br><br>
+
+<label>Programa de interés</label><br>
+<select name="programa">
+<option>Ingeniería de Software</option>
+<option>Ingeniería de Alimentos</option>
+<option>Ingeniería Civil</option>
+<option>Ingeniería Electrica</option>
+</select>
+<br><br>
+
+<label>Asunto</label><br>
+<input type="text" name="asunto">
+<br><br>
+
+<label>Mensaje</label><br>
+<textarea name="mensaje" rows="5"></textarea>
+<br><br>
+
+<button type="submit">Enviar mensaje</button>
+
+</form>
+
+</body>
+</html>
