@@ -6,16 +6,16 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     die("Acceso no permitido");
 }
 
-if(empty($_POST["nombre"]) || empty($_POST["correo"]) || empty($_POST["mensaje"])){
+if(empty($_POST["nombre"]) || empty($_POST["email"]) || empty($_POST["mensaje"])){
     die("Todos los campos son obligatorios");
 }
 
 $nombre = trim($_POST["nombre"]);
-$correo = trim($_POST["correo"]);
+$email = trim($_POST["email"]);
 $mensaje = trim($_POST["mensaje"]);
 
-$sql = "INSERT INTO mensajes (nombre, correo, mensaje)
-VALUES ('$nombre','$correo','$mensaje')";
+$sql = "INSERT INTO mensajes (nombre, email, mensaje)
+VALUES ('$nombre','$email','$mensaje')";
 
 if ($conn->query($sql) === TRUE) {
 
