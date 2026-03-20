@@ -57,17 +57,25 @@ El método POST se usa para enviar datos al servidor
 </form>
 
 <script src="js/validar.js"></script>
+
 <!-- Modal de éxito -->
 <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
     <div class="bg-white rounded-2xl shadow-xl p-8 max-w-sm mx-4 text-center">
         <div class="text-5xl mb-4">✅</div>
         <h2 class="text-xl font-bold text-lasalle-blue font-display mb-2">¡Mensaje enviado!</h2>
         <p class="text-lasalle-gray text-sm mb-6">Nos pondremos en contacto contigo pronto.</p>
-        <button onclick="cerrarModal()"
-            class="bg-lasalle-gold text-lasalle-blue font-bold px-6 py-2 rounded-full hover:brightness-110 transition">
-            Aceptar
-        </button>
+        <div class="flex flex-col gap-3">
+            <button onclick="cerrarModal()"
+                class="bg-lasalle-gold text-lasalle-blue font-bold px-6 py-2 rounded-full hover:brightness-110 transition">
+                Aceptar
+            </button>
+            <a href="index.html"
+                class="bg-lasalle-blue text-white font-bold px-6 py-2 rounded-full hover:bg-blue-900 transition">
+                Volver a inicio
+            </a>
+        </div>
     </div>
 </div>
+
 </body>
 </html>
