@@ -1,1 +1,28 @@
-// Aqui van los estilos que se usaran en Index.html y contacto.html
+/* Aqui van los estilos que se usaran en Index.html y contacto.html*/
+
+/* Estilos CSS*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Animación para tarjetas */
+.bg-white.rounded-2xl {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bg-white.rounded-2xl:hover {
+    transform: translateY(-4px);
+}
+
+/* Borde dorado al hacer focus (por si Tailwind no carga) */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #f8a700;
+    outline: none;
+}
