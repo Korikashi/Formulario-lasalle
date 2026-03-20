@@ -14,3 +14,15 @@ if(nombre == "" || correo == "" || mensaje == ""){
 return true;
 
 }
+
+window.onload = function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('enviado') === '1') {
+        document.getElementById('modal').classList.remove('hidden');
+    }
+}
+
+function cerrarModal() {
+    document.getElementById('modal').classList.add('hidden');
+    window.history.replaceState({}, document.title, 'contacto.html');
+}
