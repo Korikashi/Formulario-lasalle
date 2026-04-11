@@ -122,6 +122,20 @@ ejecutar_prueba(
     ["Error: El teléfono solo puede contener números."]
 );
 
+// 8. Prueba de Saturación de Caracteres
+ejecutar_prueba(
+    "Prevención de saturación (Exceso de caracteres)", 
+    [ "nombre" => str_repeat("A", 51), "apellido" => "Perez", "email" => "test@test.com", "telefono" => "123456", "programa" => "Sistemas", "asunto" => "Test", "mensaje" => "Hola" ], 
+    ["Error: Se ha excedido el límite de caracteres."]
+);
+
+// 9. Prueba de Prevención de XSS (Cross-Site Scripting)
+ejecutar_prueba(
+    "Prevención de XSS (Cross-Site Scripting)", 
+    [ "nombre" => "Hacker", "apellido" => "Perez", "email" => "test@test.com", "telefono" => "123456", "programa" => "Sistemas", "asunto" => "Test", "mensaje" => "<script>alert('XSS');</script> Mensaje" ], 
+    ["redireccion_exitosa", "Error de conexión", "Error:"]
+);
+
 echo "=================================================\n";
 echo "              RESUMEN DE PRUEBAS                 \n";
 echo "=================================================\n";
