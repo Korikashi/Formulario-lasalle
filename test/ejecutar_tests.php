@@ -5,11 +5,17 @@ echo "=================================================\n";
 echo "   EJECUTANDO PRUEBAS DE SEGURIDAD Y VALIDACIÓN  \n";
 echo "=================================================\n\n";
 
+$total_pruebas = 0;
+$pruebas_exitosas = 0;
+$pruebas_fallidas = 0;
+
 /**
  * Función para ejecutar pruebas aisladas sobre el formulario y capturar su salida.
  */
 function ejecutar_prueba($nombre_prueba, $datos_post, $textos_esperados_posibles) {
-    global $ruta_enviar;
+    global $ruta_enviar, $total_pruebas, $pruebas_exitosas, $pruebas_fallidas;
+    
+    $total_pruebas++;
     
     // Script que se ejecutará de forma aislada
     $codigo = '<?php
@@ -45,8 +51,10 @@ function ejecutar_prueba($nombre_prueba, $datos_post, $textos_esperados_posibles
     
     echo "Prueba: " . $nombre_prueba . "\n";
     if ($exito) {
+        $pruebas_exitosas++;
         echo " [ÉXITO] Comportamiento esperado verificado.\n";
     } else {
+        $pruebas_fallidas++;
         echo "[FALLO] Resultado inesperado:\n";
         echo "     Se esperaba alguno de: " . json_encode($textos_esperados_posibles) . "\n";
         echo "     Se obtuvo: '" . $resultado . "'\n";
@@ -61,24 +69,24 @@ ejecutar_prueba(
     ["Todos los campos son requeridos"]
 );
 
-// 2. Prueba con Emojis en el nombre (Anti-Emoji)
+// 2. Prueba con Emojis en el texto (Anti-Emoji)
 ejecutar_prueba(
     "Prevención de emojis en campos de texto", 
-    [ "nombre" => "Hola 👽", "email" => "test@test.com", "mensaje" => "Hola" ], 
+    [ "nombre" => "Hola", "apellido" => "Perez", "email" => "test@test.com", "telefono" => "123456", "programa" => "Sistemas", "asunto" => "Test", "mensaje" => "Hola 👽" ], 
     ["No se permiten emojis"]
 );
 
 // 3. Prueba con Emojis en el correo
 ejecutar_prueba(
     "Prevención de emojis en el correo electrónico", 
-    [ "nombre" => "Juan", "email" => "correo🚀@test.com", "mensaje" => "Hola" ], 
+    [ "nombre" => "Juan", "apellido" => "Perez", "email" => "correo🚀@test.com", "telefono" => "123456", "programa" => "Sistemas", "asunto" => "Test", "mensaje" => "Hola" ], 
     ["No se permiten emojis en el correo", "inválido"]
 );
 
 // 4. Prueba correo inválido sin emojis
 ejecutar_prueba(
     "Validación de formato de correo", 
-    [ "nombre" => "Juan", "email" => "correosin-arroba.com", "mensaje" => "Hola" ], 
+    [ "nombre" => "Juan", "apellido" => "Perez", "email" => "correosin-arroba.com", "telefono" => "123456", "programa" => "Sistemas", "asunto" => "Test", "mensaje" => "Hola" ], 
     ["Formato de correo electrónico inválido"]
 );
 
@@ -100,5 +108,25 @@ ejecutar_prueba(
     ["redireccion_exitosa", "Error de conexión", "Error:"] 
 );
 
-echo "Pruebas finalizadas.\n";
+// 6. Prueba de Nombre y Apellido conteniendo números
+ejecutar_prueba(
+    "Validación de nombre sin números ni caracteres especiales", 
+    [ "nombre" => "Juan123", "apellido" => "Perez", "email" => "test@test.com", "telefono" => "123456", "programa" => "Sistemas", "asunto" => "Test", "mensaje" => "Hola" ], 
+    ["Error: El nombre y apellido solo pueden contener letras."]
+);
+
+// 7. Prueba de Teléfono conteniendo letras
+ejecutar_prueba(
+    "Validación de teléfono solo numérico", 
+    [ "nombre" => "Juan", "apellido" => "Perez", "email" => "test@test.com", "telefono" => "1234abc", "programa" => "Sistemas", "asunto" => "Test", "mensaje" => "Hola" ], 
+    ["Error: El teléfono solo puede contener números."]
+);
+
+echo "=================================================\n";
+echo "              RESUMEN DE PRUEBAS                 \n";
+echo "=================================================\n";
+echo "Total de pruebas ejecutadas: $total_pruebas\n";
+echo "Pruebas con ÉXITO: $pruebas_exitosas\n";
+echo "Pruebas con FALLO: $pruebas_fallidas\n";
+echo "=================================================\n";
 ?>

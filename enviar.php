@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     die("Acceso no permitido");
 }
 
-if(empty($_POST["nombre"]) || empty($_POST["email"]) || empty($_POST["mensaje"])){
+if(empty($_POST["nombre"]) || empty($_POST["apellido"]) || empty($_POST["email"]) || empty($_POST["telefono"]) || empty($_POST["programa"]) || empty($_POST["asunto"]) || empty($_POST["mensaje"])){
     die("Todos los campos son requeridos");
 }
 
@@ -13,6 +13,15 @@ function contieneEmojis($texto) {
     $patron = '/[\x{1F600}-\x{1F64F}\x{1F300}-\x{1F5FF}\x{1F680}-\x{1F6FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{1F900}-\x{1F9FF}\x{1FA70}-\x{1FAFF}]/u';
     return preg_match($patron, $texto);
 }
+
+if (!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s\']+$/', $_POST["nombre"]) || !preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s\']+$/', $_POST["apellido"])) {
+    die("Error: El nombre y apellido solo pueden contener letras.");
+}
+
+if (!preg_match('/^[0-9]+$/', $_POST["telefono"])) {
+    die("Error: El teléfono solo puede contener números.");
+}
+
 
 if (contieneEmojis($_POST["nombre"]) || contieneEmojis($_POST["mensaje"])) {
     die("Error: No se permiten emojis en los campos del formulario.");
