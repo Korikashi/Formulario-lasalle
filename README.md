@@ -22,6 +22,10 @@ Proyecto web que permite registrar mensajes de contacto en una base de datos.
 - Luisa María Puentes Torres
 - Juan Pablo Romero Guerrero
 
+  ## Link del repositorio en GitHub
+- https://github.com/Korikashi/Formulario-lasalle
+  
+
 ## Ejecución
 1. Configurar base de datos
 2. Ajustar archivo conexion.php
