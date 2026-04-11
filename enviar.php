@@ -10,6 +10,21 @@ if(empty($_POST["nombre"]) || empty($_POST["email"]) || empty($_POST["mensaje"])
     die("Todos los campos son obligatorios");
 }
 
+// Función para detectar emojis u otros caracteres especiales no deseados
+function contieneEmojis($texto) {
+    $patron = '/[\x{1F600}-\x{1F64F}\x{1F300}-\x{1F5FF}\x{1F680}-\x{1F6FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{1F900}-\x{1F9FF}\x{1FA70}-\x{1FAFF}]/u';
+    return preg_match($patron, $texto);
+}
+
+if (contieneEmojis($_POST["nombre"]) || contieneEmojis($_POST["email"]) || contieneEmojis($_POST["mensaje"])) {
+    die("Error: No se permiten emojis en los campos del formulario.");
+}
+
+$email_limpio = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+if (!filter_var($email_limpio, FILTER_VALIDATE_EMAIL)) {
+    die("Error: Formato de correo electrónico inválido.");
+}
+
 $nombre   = htmlspecialchars(trim($_POST["nombre"]));
 $apellido = htmlspecialchars(trim($_POST["apellido"]));
 $email    = htmlspecialchars(trim($_POST["email"]));
