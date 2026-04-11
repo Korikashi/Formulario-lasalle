@@ -1,13 +1,11 @@
 <?php
 
-include "conexion.php";
-
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     die("Acceso no permitido");
 }
 
 if(empty($_POST["nombre"]) || empty($_POST["email"]) || empty($_POST["mensaje"])){
-    die("Todos los campos son obligatorios");
+    die("Todos los campos son requeridos");
 }
 
 // Función para detectar emojis u otros caracteres especiales no deseados
@@ -16,14 +14,20 @@ function contieneEmojis($texto) {
     return preg_match($patron, $texto);
 }
 
-if (contieneEmojis($_POST["nombre"]) || contieneEmojis($_POST["email"]) || contieneEmojis($_POST["mensaje"])) {
+if (contieneEmojis($_POST["nombre"]) || contieneEmojis($_POST["mensaje"])) {
     die("Error: No se permiten emojis en los campos del formulario.");
+}
+
+if (contieneEmojis($_POST["email"])) {
+    die("Error: No se permiten emojis en el correo.");
 }
 
 $email_limpio = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
 if (!filter_var($email_limpio, FILTER_VALIDATE_EMAIL)) {
     die("Error: Formato de correo electrónico inválido.");
 }
+
+include "conexion.php";
 
 $nombre   = htmlspecialchars(trim($_POST["nombre"]));
 $apellido = htmlspecialchars(trim($_POST["apellido"]));
