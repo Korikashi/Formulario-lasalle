@@ -115,7 +115,7 @@
 
     <!--ENCABEZADO-->
     <section class="bg-lasalle-blue text-white py-14 px-6 text-center">
-        <h1 class="font-display text-3xl md:text-4xl font-bold">Formulario de Contacto La Salle</h1>
+        <h1 class="font-display text-3xl md:text-4xl font-bold">Formulario de Contacto</h1>
         <p class="text-blue-200 mt-2 text-base">Universidad de La Salle</p>
     </section>
 
@@ -140,6 +140,7 @@
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Nombre</label>
                     <input type="text" name="nombre" required
+                        oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s']/g, '')"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
 
@@ -147,26 +148,30 @@
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Apellido</label>
                     <input type="text" name="apellido" required 
+                        oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s']/g, '')"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
 
                 <!--Correo electrónico-->
                 <div><label class="block text-sm font-semibold text-lasalle-blue mb-1">Correo electrónico</label>
                     <input type="email" name="email" required 
+                        oninvalid="this.setCustomValidity('Inserta un correo electronico valido')"
+                        oninput="this.setCustomValidity('')"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
 
                 <!--Teléfono-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Teléfono</label>
-                    <input type="tel" name="telefono"
+                    <input type="tel" name="telefono" required
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
 
                 <!--Programa de Interés-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Programa de interés</label>
-                    <select name="programa"
+                    <select name="programa" required
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm bg-white transition" >
                         <option>Ingeniería de Software</option>
                         <option>Ingeniería de Alimentos</option>
@@ -178,14 +183,14 @@
                 <!--Asunto-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Asunto</label>
-                    <input type="text" name="asunto"
+                    <input type="text" name="asunto" required
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
 
                 <!--Mensaje-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Mensaje</label>
-                    <textarea name="mensaje" rows="5" 
+                    <textarea name="mensaje" rows="5" required
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition resize-none"></textarea>
                 </div>
 
