@@ -139,7 +139,7 @@
                 <!--Nombre-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Nombre</label>
-                    <input type="text" name="nombre" required
+                    <input type="text" name="nombre" required maxlength="50"
                         oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s']/g, '')"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
@@ -147,14 +147,14 @@
                 <!--Apellido-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Apellido</label>
-                    <input type="text" name="apellido" required 
+                    <input type="text" name="apellido" required maxlength="50"
                         oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s']/g, '')"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
 
                 <!--Correo electrónico-->
                 <div><label class="block text-sm font-semibold text-lasalle-blue mb-1">Correo electrónico</label>
-                    <input type="email" name="email" required 
+                    <input type="email" name="email" required maxlength="100"
                         oninvalid="this.setCustomValidity('Inserta un correo electronico valido')"
                         oninput="this.setCustomValidity('')"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
@@ -163,7 +163,7 @@
                 <!--Teléfono-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Teléfono</label>
-                    <input type="tel" name="telefono" required
+                    <input type="tel" name="telefono" required maxlength="15"
                         oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
@@ -183,14 +183,14 @@
                 <!--Asunto-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Asunto</label>
-                    <input type="text" name="asunto" required
+                    <input type="text" name="asunto" required maxlength="100"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition" />
                 </div>
 
                 <!--Mensaje-->
                 <div>
                     <label class="block text-sm font-semibold text-lasalle-blue mb-1">Mensaje</label>
-                    <textarea name="mensaje" rows="5" required
+                    <textarea name="mensaje" rows="5" required maxlength="500"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm transition resize-none"></textarea>
                 </div>
 
