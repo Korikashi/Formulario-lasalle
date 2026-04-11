@@ -8,6 +8,10 @@ if(empty($_POST["nombre"]) || empty($_POST["apellido"]) || empty($_POST["email"]
     die("Todos los campos son requeridos");
 }
 
+if (strlen($_POST["nombre"]) > 50 || strlen($_POST["apellido"]) > 50 || strlen($_POST["email"]) > 100 || strlen($_POST["telefono"]) > 15 || strlen($_POST["asunto"]) > 100 || strlen($_POST["mensaje"]) > 500) {
+    die("Error: Se ha excedido el límite de caracteres.");
+}
+
 // Función para detectar emojis u otros caracteres especiales no deseados
 function contieneEmojis($texto) {
     $patron = '/[\x{1F600}-\x{1F64F}\x{1F300}-\x{1F5FF}\x{1F680}-\x{1F6FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{1F900}-\x{1F9FF}\x{1FA70}-\x{1FAFF}]/u';
@@ -38,13 +42,13 @@ if (!filter_var($email_limpio, FILTER_VALIDATE_EMAIL)) {
 
 include "conexion.php";
 
-$nombre   = htmlspecialchars(trim($_POST["nombre"]));
-$apellido = htmlspecialchars(trim($_POST["apellido"]));
-$email    = htmlspecialchars(trim($_POST["email"]));
-$telefono = htmlspecialchars(trim($_POST["telefono"]));
-$programa = htmlspecialchars(trim($_POST["programa"]));
-$asunto   = htmlspecialchars(trim($_POST["asunto"]));
-$mensaje  = htmlspecialchars(trim($_POST["mensaje"]));
+$nombre   = htmlspecialchars(strip_tags(trim($_POST["nombre"])), ENT_QUOTES, 'UTF-8');
+$apellido = htmlspecialchars(strip_tags(trim($_POST["apellido"])), ENT_QUOTES, 'UTF-8');
+$email    = htmlspecialchars(strip_tags(trim($_POST["email"])), ENT_QUOTES, 'UTF-8');
+$telefono = htmlspecialchars(strip_tags(trim($_POST["telefono"])), ENT_QUOTES, 'UTF-8');
+$programa = htmlspecialchars(strip_tags(trim($_POST["programa"])), ENT_QUOTES, 'UTF-8');
+$asunto   = htmlspecialchars(strip_tags(trim($_POST["asunto"])), ENT_QUOTES, 'UTF-8');
+$mensaje  = htmlspecialchars(strip_tags(trim($_POST["mensaje"])), ENT_QUOTES, 'UTF-8');
 
 // Prepared statement - protege contra SQL injection
 $stmt = $conn->prepare("INSERT INTO mensajes (nombre, apellido, email, telefono, programa, asunto, mensaje) VALUES (?, ?, ?, ?, ?, ?, ?)");
