@@ -65,7 +65,7 @@ Todos los integrantes fueron responsables de probar el funcionamiento de cada pa
 
 ## Repositorio en GitHub
 
-- [https://github.com/Korikashi/Formulario-lasalle](https://github.com/Korikashi/Formulario-lasalle)
+[https://github.com/Korikashi/Formulario-lasalle](https://github.com/Korikashi/Formulario-lasalle)
 
 ## URL del sitio
 
