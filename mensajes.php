@@ -84,6 +84,15 @@ $result = $conn->query($sql);
             transition: width 0.25s ease;
         }
         .nav-link:hover::after {width: 100%;}
+
+        /*Ajustar columna de Mensaje con salto de línea*/
+        .col-mensaje {
+            min-width: 200px;
+            max-width: 280px;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.5;
+        }
     </style>
 
 </head>
@@ -157,7 +166,9 @@ $result = $conn->query($sql);
                                         <?php echo htmlspecialchars($row["programa"]); ?>
                                     </span>    
                                 </td>
-                                <td class="py-3 px-5 text-sm text-lasalle-gray max-w-xs truncate"><?php echo htmlspecialchars($row["mensaje"]); ?></td>
+                                <td class="py-3 px-5 text-sm text-lasalle-gray" style="min-width:200px; max-width:280px; white-space:normal; word-break:break-word; line-height:1.5;">
+                                    <?php echo nl2br(htmlspecialchars($row["mensaje"], ENT_QUOTES, 'UTF-8')); ?>
+                                </td>
                                 <td class="py-3 px-5 text-sm text-lasalle-gray whitespace-nowrap"><?php echo htmlspecialchars($row["fecha"]); ?></td>
                             </tr>
                         <?php endwhile; ?>
