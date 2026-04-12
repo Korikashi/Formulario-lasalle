@@ -62,6 +62,25 @@ function ejecutar_prueba($nombre_prueba, $datos_post, $textos_esperados_posibles
     echo "-------------------------------------------------\n";
 }
 
+// 0. Prueba de conexión a la base de datos
+$total_pruebas++;
+$tmp_file_conn = tempnam(sys_get_temp_dir(), 'test_conn_');
+$ruta_conexion_php = dirname(__DIR__) . '/conexion.php';
+file_put_contents($tmp_file_conn, '<?php include "' . addslashes($ruta_conexion_php) . '"; echo "Conexión exitosa";');
+$resultado_conn = trim(shell_exec("php " . escapeshellarg($tmp_file_conn)));
+unlink($tmp_file_conn);
+
+echo "Prueba: Conexión a la base de datos\n";
+if (strpos($resultado_conn, "Conexión exitosa") !== false) {
+    $pruebas_exitosas++;
+    echo " [ÉXITO] Conexión establecida correctamente.\n";
+} else {
+    $pruebas_fallidas++;
+    echo "[FALLO] No se pudo establecer la conexión a la base de datos.\n";
+    echo "     Se obtuvo: '" . $resultado_conn . "'\n";
+}
+echo "-------------------------------------------------\n";
+
 // 1. Prueba de campos obligatorios vacíos
 ejecutar_prueba(
     "Validación de campos vacíos", 
