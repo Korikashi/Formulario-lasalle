@@ -65,11 +65,11 @@ Todos los integrantes fueron responsables de probar el funcionamiento de cada pa
 
 ## Repositorio en GitHub
 
-[https://github.com/Korikashi/Formulario-lasalle](https://github.com/Korikashi/Formulario-lasalle)
+https://github.com/Korikashi/Formulario-lasalle
 
 ## URL del sitio
 
-[https://lasalleformulario.infinityfreeapp.com](https://lasalleformulario.infinityfreeapp.com)
+https://lasalleformulario.infinityfreeapp.com
 
 
 ## Cómo montar el proyecto localmente
@@ -96,11 +96,11 @@ En la carpeta del proyecto encontrará un archivo .env.example con la estructura
 
 Luego, abra el archivo .env creado y reemplace los valores con sus propios datos de conexión:
 
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_NAME=nombre_de_su_base_de_datos
-DB_USER=su_usuario
-DB_PASS=su_contraseña
+DB_HOST=127.0.0.1  
+DB_PORT=3306  
+DB_NAME=nombre_de_su_base_de_datos  
+DB_USER=su_usuario  
+DB_PASS=su_contraseña  
 
 Los valores aquí varían dependiendo de su configuración local. Tenga en cuenta que el archivo .env no debe subirse al repositorio ni compartirse públicamente (está en .gitignore)
 
