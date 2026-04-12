@@ -25,25 +25,25 @@ Es una aplicación que permite a los usuarios diligenciar un formulario de conta
 ## Roles del equipo
 
 ### Líder
-**Juan Pablo Romero Guerrero**
+**Juan Pablo Romero Guerrero**  
 Responsable de la organización y distribución de actividadaes a los integrantes según su rol y supervisar el correcto funcionamiento de cada parte del proyecto
 
 ### Frontend
 #### Página principal
-**Luisa María Puentes Torres**
+**Luisa María Puentes Torres**  
 Responsable del diseño y desarrollo visual de la página de inicio del sitio
 - index.html — Estructura y contenido de la página principal
 - css/styles.css — Estilos del proyecto
 
 
 #### Formulario de contacto
-**Santiago Cárdenas Aldana**
+**Santiago Cárdenas Aldana**  
 Responsable del desarrollo del formulario de contacto y su integración con el backend
 - contacto.html — Formulario con campos de nombre, apellido, correo, teléfono, programa, asunto y mensaje, configurado para enviar datos a enviar.php
 
 
 ### Backend y Base de datos
-**Juan Pablo Romero Guerrero**
+**Juan Pablo Romero Guerrero**  
 Responsable de la lógica del servidor, el procesamiento de datos y la gestión de la base de datos
 - enviar.php — Recibe los datos del formulario y los almacena usando consultas preparadas (protección contra SQL Injection)
 - conexion.php — Realiza la conexión con la base de datos leyendo las credenciales desde el archivo .env
@@ -52,7 +52,7 @@ Responsable de la lógica del servidor, el procesamiento de datos y la gestión 
 
 
 ### Deploy
-**Humberto Cubillos Torres**
+**Humberto Cubillos Torres**  
 Responsable de publicar el proyecto en una herramienta de Hosting público gratuito
 - Subir del proyecto a InfinityFree
 - Verificar el funcionamiento
@@ -60,7 +60,7 @@ Responsable de publicar el proyecto en una herramienta de Hosting público gratu
 
 
 ### Tester
-**Todos**
+**Todos**  
 Todos los integrantes fueron responsables de probar el funcionamiento de cada parte del proyecto (Formulario, conexión a base de datos, almacenamiento de datos y visualización de mensajes), con tal de verificar que cada una funcionara correctamente y que en conjunto dieran solución adecuada al problema planteado.
 
 ## Repositorio en GitHub
